@@ -1,7 +1,9 @@
+import errorHandler from '../errorHandler';
 import { listPost } from '../../../redux/Actions';
 
-export const GetPostApi = () => async (dispatch) => {
-  const urlData = await fetch('https://jsonplaceholder.typicode.com/posts');
-  const dataJson = await urlData.json();
-  dispatch(listPost(dataJson));
+export const GetPostApi = () => (dispatch) => {
+  fetch('https://jsonplaceholder.typicode.com/posts')
+    .then((response) => response.json())
+    .then((res) => dispatch(listPost(res)))
+    .catch(errorHandler);
 };
