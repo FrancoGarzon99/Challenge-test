@@ -2,8 +2,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Button, useDisclosure } from '@chakra-ui/react';
-import CardPost from '../CardPost/CardPost.jsx';
-import CreatePostModal from '../CreatePostModal/CreatePostModal.jsx';
+import CardPost from '../cardPost/CardPost.jsx';
+import CreatePostModal from '../createPostModal/CreatePostModal.jsx';
 
 const Home = () => {
   //  Store Redux

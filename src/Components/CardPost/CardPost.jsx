@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { Button, useToast } from '@chakra-ui/react';
-import { DeletePost } from '../../Redux/Actions';
+import { DeletePost } from '../../services/api/deletePost/DeletePost';
 
 const CardPost = ({ id, title, body }) => {
   const dispatch = useDispatch();
@@ -11,9 +11,8 @@ const CardPost = ({ id, title, body }) => {
 
   return (
     <div className="card" style={{ width: '18rem' }}>
-      <div className="card-header">{title}</div>
+      <div className="card-header">{title.slice(0, 30)}</div>
       <div className="card-body">
-        <h5 className="card-title">{id}</h5>
         <p className="card-text">{body}</p>
         <Button
           colorScheme="blue"

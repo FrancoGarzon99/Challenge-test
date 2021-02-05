@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import Home from '../../Components/Home/Home.jsx';
-import { GetPostApi } from '../../Redux/Actions';
+import Home from '../../components/home/Home.jsx';
+import { GetPostApi } from '../../services/api/getPost/GetPost';
 
 const HomeContainer = () => {
   const dispatch = useDispatch();
