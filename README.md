@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Run Proyect! 
 
-This project was bootstrapped with Create React App
+Create React App
 
 ## Available Scripts
 
