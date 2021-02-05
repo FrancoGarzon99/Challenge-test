@@ -1,3 +1,5 @@
+/* eslint-disable operator-linebreak */
+/* eslint-disable object-curly-newline */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -13,19 +15,50 @@ import {
   Input,
   Button,
   Textarea,
+  Text,
+  useToast,
 } from '@chakra-ui/react';
-// import { useDispatch } from 'react-redux';
-// import { CreatePost } from '../../Redux/Actions';
+import { useDispatch } from 'react-redux';
+import { CreatePost } from '../../services/api/createPost/CreatePost';
 
 const CreatePostModal = ({ initialRef, finalRef, isOpen, onClose }) => {
-  // const dispatch = useDispatch();
-  // state Component
-  const [dataForm, setDataForm] = useState({});
-  // save date in state
-  const handleForm = (e) => {
-    setDataForm({ ...dataForm, [e.target.name]: e.target.value });
+  // Toast Chakra UI
+  const toast = useToast();
+  // Dispatch
+  const dispatch = useDispatch();
+  // Function create Random ID to post
+  const randomID = () => {
+    const id = Math.floor(Math.round(Math.random() * (500 - 50) + 50));
+    return id;
   };
-  console.log(dataForm);
+
+  // state Component
+  const [dataForm, setDataForm] = useState({
+    id: randomID(),
+    title: '',
+    body: '',
+  });
+  // State submiting true
+  const [validateInputs, setValidateInputs] = useState({
+    title: true || false,
+    body: true || false,
+  });
+  // Submiting Click
+  const submitingForm = () => {
+    dispatch(CreatePost(dataForm));
+    toast({
+      position: 'bottom',
+      title: 'Listo!',
+      description: 'Post Creado con exito!',
+      status: 'success',
+      duration: 1200,
+      isClosable: true,
+    });
+    setDataForm({ id: randomID(), title: '', body: '' });
+    setValidateInputs({ title: true, body: true });
+    onClose();
+  };
+  // Render
   return (
     <>
       <Modal
@@ -45,18 +78,49 @@ const CreatePostModal = ({ initialRef, finalRef, isOpen, onClose }) => {
                 ref={initialRef}
                 placeholder="Titulo del Post"
                 name="title"
-                onChange={handleForm}
+                onChange={(e) => {
+                  setDataForm({ ...dataForm, title: e.target.value });
+                  if (e.target.value) {
+                    setValidateInputs({ ...validateInputs, title: false });
+                  } else {
+                    setValidateInputs({ ...validateInputs, title: true });
+                  }
+                }}
               />
+              {validateInputs.title === true && (
+                <Text color="red" fontSize={11}>
+                  Completa este campo!
+                </Text>
+              )}
             </FormControl>
-
             <FormControl mt={4}>
               <FormLabel>Descripción</FormLabel>
-              <Textarea placeholder="Descripción del Post" name="body" onChange={handleForm} />
+              <Textarea
+                placeholder="Descripción del Post"
+                name="body"
+                onChange={(e) => {
+                  setDataForm({ ...dataForm, body: e.target.value });
+                  if (e.target.value) {
+                    setValidateInputs({ ...validateInputs, body: false });
+                  } else {
+                    setValidateInputs({ ...validateInputs, body: true });
+                  }
+                }}
+              />
+              {validateInputs.body === true && (
+                <Text color="red" fontSize={11}>
+                  Completa este campo!
+                </Text>
+              )}
             </FormControl>
           </ModalBody>
-
           <ModalFooter>
-            <Button colorScheme="blue" mr={3}>
+            <Button
+              colorScheme="blue"
+              isDisabled={!validateInputs.body === false || !validateInputs.title === false}
+              mr={3}
+              onClick={submitingForm}
+            >
               Guardar
             </Button>
             <Button onClick={onClose}>Cancelar</Button>
@@ -66,7 +130,7 @@ const CreatePostModal = ({ initialRef, finalRef, isOpen, onClose }) => {
     </>
   );
 };
-
+// Proptypes props
 CreatePostModal.propTypes = {
   initialRef: PropTypes.objectOf(PropTypes.any).isRequired,
   finalRef: PropTypes.objectOf(PropTypes.any).isRequired,

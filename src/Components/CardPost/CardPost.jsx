@@ -20,10 +20,10 @@ const CardPost = ({ id, title, body }) => {
             dispatch(DeletePost(id));
             toast({
               position: 'bottom',
-              title: 'Exelente!',
-              description: `Post ${id} Eliminado con exito!`,
+              title: 'Listo!',
+              description: `Post ID ${id} Eliminado con exito!`,
               status: 'success',
-              duration: 9000,
+              duration: 1200,
               isClosable: true,
             });
           }}

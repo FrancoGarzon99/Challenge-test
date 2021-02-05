@@ -19,9 +19,11 @@ const Home = () => {
   return (
     <>
       <h2>Bienvenido!</h2>
-      <Button onClick={onOpen}>Crear Post</Button>
+      <Button onClick={onOpen} size="lg">
+        Crear Post
+      </Button>
       <div>
-        {stateStore.listPost &&
+        {stateStore.listPost.length > 0 &&
           stateStore.listPost.map((p) => (
             <div key={p.id}>
               <CardPost id={p.id} title={p.title} body={p.body} />
