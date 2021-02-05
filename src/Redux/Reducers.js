@@ -1,7 +1,7 @@
 // Inicializamos el initialState
 /*eslint-disable*/
 let requestGET = 0;
-const requestPost = 0;
+let requestPost = 0;
 // const requestPut = 0;
 let requestDELETE = 0;
 
@@ -21,10 +21,10 @@ const Reducers = (state = initialState, action) => {
         listPost: action.payload,
         peticionesGet: ++requestGET,
       };
-    case 'LIST_POST':
+    case 'CREATE_POST':
       return {
         ...state,
-        listPost: state.listPost.push(action.newPost),
+        listPost: state.listPost.concat(action.newPost),
         peticionesPost: ++requestPost,
       };
     case 'DELETE_POST':
