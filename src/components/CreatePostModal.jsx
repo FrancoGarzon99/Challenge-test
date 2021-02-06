@@ -19,7 +19,7 @@ import {
   useToast,
 } from '@chakra-ui/react';
 import { useDispatch } from 'react-redux';
-import { CreatePost } from '../../services/api/createPost/CreatePost';
+import { CreatePost } from '../services/CreatePost';
 
 const CreatePostModal = ({ initialRef, finalRef, isOpen, onClose }) => {
   // Toast Chakra UI

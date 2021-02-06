@@ -1,5 +1,5 @@
-import errorHandler from '../errorHandler';
-import { EditPostReducer, DeletePostReducer } from '../../../redux/Actions';
+import errorHandler from './ErrorHandler';
+import { EditPostReducer, DeletePostReducer } from '../redux/Actions';
 
 let count = 0;
 export const EditPost = (post) => (dispatch) => {
@@ -16,6 +16,6 @@ export const EditPost = (post) => (dispatch) => {
     .then(() => dispatch(DeletePostReducer(post.id)))
     .then(() => dispatch(EditPostReducer(post)))
     // eslint-disable-next-line no-plusplus
-    .then(() => localStorage.setItem('GETS', JSON.stringify(++count)))
+    .then(() => localStorage.setItem('PUT', JSON.stringify(++count)))
     .catch(errorHandler);
 };

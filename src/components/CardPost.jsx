@@ -3,8 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { Button, useToast, Box, Textarea, Input, Text } from '@chakra-ui/react';
-import { DeletePost } from '../../services/api/deletePost/DeletePost';
-import { EditPost } from '../../services/api/editPost/EditPost';
+import { DeletePost } from '../services/DeletePost';
+import { EditPost } from '../services/EditPost';
 
 const CardPost = ({ id, title, body }) => {
   // Hooks of Chakra UI
