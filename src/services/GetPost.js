@@ -1,5 +1,5 @@
 import errorHandler from './ErrorHandler';
-import { listPost } from '../redux/Actions';
+import { listPost } from '../Redux/Actions';
 
 let count = 0;
 export const GetPostApi = () => (dispatch) => {
