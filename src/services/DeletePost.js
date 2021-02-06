@@ -1,6 +1,6 @@
 /* eslint-disable no-plusplus */
 import errorHandler from './ErrorHandler';
-import { DeletePostReducer } from '../redux/Actions';
+import { DeletePostReducer } from '../Redux/Actions';
 
 let count = 0;
 export const DeletePost = (id) => (dispatch) => {
