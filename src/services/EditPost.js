@@ -1,5 +1,5 @@
 import errorHandler from './ErrorHandler';
-import { EditPostReducer, DeletePostReducer } from '../Redux/Actions';
+import { EditPostReducer, DeletePostReducer } from '../redux/Actions';
 
 let count = 0;
 export const EditPost = (post) => (dispatch) => {

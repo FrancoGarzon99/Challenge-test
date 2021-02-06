@@ -1,4 +1,4 @@
-import { CreatePostReducer } from '../Redux/Actions';
+import { CreatePostReducer } from '../redux/Actions';
 
 let count = 0;
 export const CreatePost = (newPost) => (dispatch) => {
