@@ -1,5 +1,6 @@
 import { CreatePostReducer } from '../../../redux/Actions';
 
+let count = 0;
 export const CreatePost = (newPost) => (dispatch) => {
   fetch('https://jsonplaceholder.typicode.com/posts', {
     method: 'POST',
@@ -8,5 +9,8 @@ export const CreatePost = (newPost) => (dispatch) => {
       body: newPost.body,
     }),
     headers: { 'Content-type': 'application/json; charset=UTF-8' },
-  }).then(() => dispatch(CreatePostReducer(newPost)));
+  })
+    .then(() => dispatch(CreatePostReducer(newPost)))
+    // eslint-disable-next-line no-plusplus
+    .then(() => localStorage.setItem('POST', JSON.stringify(++count)));
 };

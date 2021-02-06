@@ -2,7 +2,7 @@
 /*eslint-disable*/
 let requestGET = 0;
 let requestPost = 0;
-// const requestPut = 0;
+let requestPut = 0;
 let requestDELETE = 0;
 
 const initialState = {
@@ -32,6 +32,12 @@ const Reducers = (state = initialState, action) => {
         ...state,
         listPost: state.listPost.filter((p) => p.id !== action.id),
         peticionesDelete: ++requestDELETE,
+      };
+    case 'EDIT_POST':
+      return {
+        ...state,
+        listPost: state.listPost.concat(action.post),
+        peticionesPut: ++requestPut,
       };
     default:
       return state;

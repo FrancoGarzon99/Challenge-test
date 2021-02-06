@@ -11,3 +11,7 @@ export const CreatePostReducer = (newPost) => ({
   type: 'CREATE_POST',
   newPost,
 });
+export const EditPostReducer = (post) => ({
+  type: 'EDIT_POST',
+  post,
+});

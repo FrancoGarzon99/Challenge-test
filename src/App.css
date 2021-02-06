@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+/* Estilos del scroll */
+.scroll-style {
+  height: 480px;
+  overflow-y: scroll;
+}
+.scroll-style::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+.scroll-style::-webkit-scrollbar:vertical {
+  width: 5px;
+}
+.scroll-style::-webkit-scrollbar-thumb {
+  background-color: #797979;
+  border-radius: 20px;
+}
